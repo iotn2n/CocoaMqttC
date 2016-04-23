@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		15895DEF1CCB50060011C4FB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 15895DED1CCB50060011C4FB /* Main.storyboard */; };
+		15895DF11CCB72530011C4FB /* EventBus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15895DF01CCB72530011C4FB /* EventBus.swift */; };
 		15F49EDF1CCB37590078E2FF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F49EDE1CCB37590078E2FF /* AppDelegate.swift */; };
 		15F49EEF1CCB39230078E2FF /* ChatLeftMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F49EEE1CCB39230078E2FF /* ChatLeftMessageCell.swift */; };
 		15F49EF11CCB3A270078E2FF /* ChatMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F49EF01CCB3A270078E2FF /* ChatMessage.swift */; };
@@ -22,6 +23,7 @@
 /* Begin PBXFileReference section */
 		0056F992A02B774275329361 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		15895DEE1CCB50060011C4FB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		15895DF01CCB72530011C4FB /* EventBus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventBus.swift; sourceTree = "<group>"; };
 		15F49EDB1CCB37590078E2FF /* CocoaMqttC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CocoaMqttC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		15F49EDE1CCB37590078E2FF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		15F49EE51CCB37590078E2FF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -81,6 +83,7 @@
 				15F49EEE1CCB39230078E2FF /* ChatLeftMessageCell.swift */,
 				15F49EDE1CCB37590078E2FF /* AppDelegate.swift */,
 				15F49EE51CCB37590078E2FF /* Info.plist */,
+				15895DF01CCB72530011C4FB /* EventBus.swift */,
 			);
 			path = CocoaMqttC;
 			sourceTree = "<group>";
@@ -230,6 +233,7 @@
 				15F49EF11CCB3A270078E2FF /* ChatMessage.swift in Sources */,
 				15F49EEF1CCB39230078E2FF /* ChatLeftMessageCell.swift in Sources */,
 				15F49EF51CCB3A380078E2FF /* ChatViewController.swift in Sources */,
+				15895DF11CCB72530011C4FB /* EventBus.swift in Sources */,
 				15F49EDF1CCB37590078E2FF /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

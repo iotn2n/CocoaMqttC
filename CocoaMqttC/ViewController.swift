@@ -1,9 +1,9 @@
 //
-//  ViewController.swift
-//  Example
+//  EventBus.swift
+//  CocoaMqttC
 //
-//  Created by CrazyWisdom on 15/12/14.
-//  Copyright © 2015年 emqtt.io. All rights reserved.
+//  Created by iotn2n on 16/4/23.
+//  Copyright © 2016年 iot. All rights reserved.
 //
 
 import UIKit
@@ -42,7 +42,7 @@ class ViewController: UIViewController {
 
     func mqttSetting() {
         let clientIdPid = "CocoaMQTT-\(animal!)-" + String(NSProcessInfo().processIdentifier)
-        mqtt = CocoaMQTT(clientId: clientIdPid, host: "localhost", port: 1883)
+        mqtt = CocoaMQTT(clientId: clientIdPid, host: "192.168.1.101", port: 1883)
         //mqtts
         //let mqtt = CocoaMQTT(clientId: clientIdPid, host: "localhost", port: 8883)
         //mqtt.secureMQTT = true

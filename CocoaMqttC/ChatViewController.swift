@@ -1,9 +1,9 @@
 //
-//  ChatViewController.swift
-//  Example
+//  EventBus.swift
+//  CocoaMqttC
 //
-//  Created by CrazyWisdom on 15/12/24.
-//  Copyright © 2015年 emqtt.io. All rights reserved.
+//  Created by iotn2n on 16/4/23.
+//  Copyright © 2016年 iot. All rights reserved.
 //
 
 import UIKit

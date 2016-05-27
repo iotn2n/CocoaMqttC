@@ -7,8 +7,8 @@
 //
 
 import UIKit
+import SwiftEventBus
 import CocoaMQTT
-
 
 class ChatViewController: UIViewController {
     var animal: String? {
@@ -28,13 +28,16 @@ class ChatViewController: UIViewController {
             }
         }
     }
-    var mqtt: CocoaMQTT?
+    
     var messages: [ChatMessage] = [] {
         didSet {
             tableView.reloadData()
             scrollToBottom()
         }
     }
+    
+   
+    
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var messageTextView: UITextView! {
@@ -57,9 +60,10 @@ class ChatViewController: UIViewController {
     @IBAction func sendMessage() {
         let message = messageTextView.text
         if let client = animal {
-            mqtt!.publish("chat/room/animals/client/" + client, withString: message, qos: .QOS1)
+            let msg = CocoaMQTTMessage.init(topic: "chat/room/animals/client/" + client, string: message, qos: .QOS1)
+            SwiftEventBus.post("publish", sender: msg)
         }
-    
+        
         messageTextView.text = ""
         sendMessageButton.enabled = false
         messageTextViewHeightConstraint.constant = messageTextView.contentSize.height
@@ -67,10 +71,14 @@ class ChatViewController: UIViewController {
         view.endEditing(true)
     }
     @IBAction func disconnect() {
-        mqtt!.disconnect()
         navigationController?.popViewControllerAnimated(true)
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+        SwiftEventBus.unregister(self)
     }
     
+    override func viewWillAppear(animated: Bool) {
+        navigationController?.navigationBar.hidden = false
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -82,20 +90,26 @@ class ChatViewController: UIViewController {
         tableView.dataSource = self
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 50
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "receivedMessage:", name: "MQTTMessageNotification" + animal!, object: nil)
+        SwiftEventBus.onMainThread(self, name:"receivedMessage") { notification in
+            let msg : CocoaMQTTMessage = notification.object as! CocoaMQTTMessage
+            self.receivedMessage(msg)
+        }
+        
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardChanged:", name: UIKeyboardWillChangeFrameNotification, object: nil)
     }
     
     deinit {
         NSNotificationCenter.defaultCenter().removeObserver(self)
+        SwiftEventBus.unregister(self)
     }
     
     
     func keyboardChanged(notification: NSNotification) {
         let userInfo = notification.userInfo as! [String: AnyObject]
         let keyboardValue = userInfo["UIKeyboardFrameEndUserInfoKey"]
-        let bottomDistance = UIScreen.mainScreen().bounds.size.height - (navigationController?.navigationBar.frame.height)! - keyboardValue!.CGRectValue.origin.y
-        
+       
+        let bottomDistance = UIScreen.mainScreen().bounds.size.height - (self.navigationController?.navigationBar.frame.height)! - keyboardValue!.CGRectValue.origin.y
+    
         if bottomDistance > 0 {
             inputViewBottomConstraint.constant = bottomDistance
         } else {
@@ -103,14 +117,13 @@ class ChatViewController: UIViewController {
         }
         view.layoutIfNeeded()
     }
-
-    func receivedMessage(notification: NSNotification) {
-        let userInfo = notification.userInfo as! [String: AnyObject]
-        let content = userInfo["message"] as! String
-        let topic = userInfo["topic"] as! String
+   
+    func receivedMessage(msg: CocoaMQTTMessage) {
+        let content = msg.string
+        let topic = msg.topic
         let sender = topic.stringByReplacingOccurrencesOfString("chat/room/animals/client/", withString: "")
-        let chatMessage = ChatMessage(sender: sender, content: content)
-        messages.append(chatMessage)
+        let chatMessage = ChatMessage(sender: sender, content: content!)
+        self.messages.append(chatMessage)
     }
 
     func scrollToBottom() {
@@ -142,6 +155,8 @@ extension ChatViewController: UITextViewDelegate {
     }
     
 }
+
+
 
 extension ChatViewController: UITableViewDataSource, UITableViewDelegate {
     

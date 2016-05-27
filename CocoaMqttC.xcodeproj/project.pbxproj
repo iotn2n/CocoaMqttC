@@ -7,8 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		150BC54A1CF7A78800776E8E /* NSObject+GetUUID.m in Sources */ = {isa = PBXBuildFile; fileRef = 150BC5491CF7A78800776E8E /* NSObject+GetUUID.m */; };
 		15895DEF1CCB50060011C4FB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 15895DED1CCB50060011C4FB /* Main.storyboard */; };
-		15895DF11CCB72530011C4FB /* EventBus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15895DF01CCB72530011C4FB /* EventBus.swift */; };
+		15895DFA1CCBBB070011C4FB /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15895DF91CCBBB070011C4FB /* LoginService.swift */; };
 		15F49EDF1CCB37590078E2FF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F49EDE1CCB37590078E2FF /* AppDelegate.swift */; };
 		15F49EEF1CCB39230078E2FF /* ChatLeftMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F49EEE1CCB39230078E2FF /* ChatLeftMessageCell.swift */; };
 		15F49EF11CCB3A270078E2FF /* ChatMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F49EF01CCB3A270078E2FF /* ChatMessage.swift */; };
@@ -22,8 +23,11 @@
 
 /* Begin PBXFileReference section */
 		0056F992A02B774275329361 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		150BC5481CF7A78800776E8E /* NSObject+GetUUID.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+GetUUID.h"; sourceTree = "<group>"; };
+		150BC5491CF7A78800776E8E /* NSObject+GetUUID.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+GetUUID.m"; sourceTree = "<group>"; };
+		150BC54B1CF7A90A00776E8E /* CocoaMqttC-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CocoaMqttC-Bridging-Header.h"; sourceTree = "<group>"; };
 		15895DEE1CCB50060011C4FB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		15895DF01CCB72530011C4FB /* EventBus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventBus.swift; sourceTree = "<group>"; };
+		15895DF91CCBBB070011C4FB /* LoginService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
 		15F49EDB1CCB37590078E2FF /* CocoaMqttC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CocoaMqttC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		15F49EDE1CCB37590078E2FF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		15F49EE51CCB37590078E2FF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -51,6 +55,60 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		150BC53D1CF7A3C800776E8E /* tools */ = {
+			isa = PBXGroup;
+			children = (
+				150BC5481CF7A78800776E8E /* NSObject+GetUUID.h */,
+				150BC5491CF7A78800776E8E /* NSObject+GetUUID.m */,
+			);
+			name = tools;
+			sourceTree = "<group>";
+		};
+		15895DF21CCBB7D50011C4FB /* views */ = {
+			isa = PBXGroup;
+			children = (
+				15895DED1CCB50060011C4FB /* Main.storyboard */,
+				15F49EFB1CCB3EB10078E2FF /* Assets.xcassets */,
+				15F49EF91CCB3DED0078E2FF /* Base.lproj */,
+			);
+			name = views;
+			sourceTree = "<group>";
+		};
+		15895DF31CCBB8070011C4FB /* controllers */ = {
+			isa = PBXGroup;
+			children = (
+				15F49EF31CCB3A380078E2FF /* ChatViewController.swift */,
+				15F49EF61CCB3A410078E2FF /* ViewController.swift */,
+			);
+			name = controllers;
+			sourceTree = "<group>";
+		};
+		15895DF41CCBB82E0011C4FB /* models */ = {
+			isa = PBXGroup;
+			children = (
+				15F49EEE1CCB39230078E2FF /* ChatLeftMessageCell.swift */,
+				15F49EF21CCB3A380078E2FF /* ChatRightMessageCell.swift */,
+				15F49EF01CCB3A270078E2FF /* ChatMessage.swift */,
+			);
+			name = models;
+			sourceTree = "<group>";
+		};
+		15895DF51CCBB87C0011C4FB /* servers */ = {
+			isa = PBXGroup;
+			children = (
+				15895DF91CCBBB070011C4FB /* LoginService.swift */,
+			);
+			name = servers;
+			sourceTree = "<group>";
+		};
+		15895DF61CCBB8960011C4FB /* surport files */ = {
+			isa = PBXGroup;
+			children = (
+				15F49EE51CCB37590078E2FF /* Info.plist */,
+			);
+			name = "surport files";
+			sourceTree = "<group>";
+		};
 		15F49ED21CCB37590078E2FF = {
 			isa = PBXGroup;
 			children = (
@@ -73,17 +131,14 @@
 		15F49EDD1CCB37590078E2FF /* CocoaMqttC */ = {
 			isa = PBXGroup;
 			children = (
-				15F49EFB1CCB3EB10078E2FF /* Assets.xcassets */,
-				15F49EF91CCB3DED0078E2FF /* Base.lproj */,
-				15F49EF61CCB3A410078E2FF /* ViewController.swift */,
-				15F49EF21CCB3A380078E2FF /* ChatRightMessageCell.swift */,
-				15895DED1CCB50060011C4FB /* Main.storyboard */,
-				15F49EF31CCB3A380078E2FF /* ChatViewController.swift */,
-				15F49EF01CCB3A270078E2FF /* ChatMessage.swift */,
-				15F49EEE1CCB39230078E2FF /* ChatLeftMessageCell.swift */,
+				150BC54B1CF7A90A00776E8E /* CocoaMqttC-Bridging-Header.h */,
+				150BC53D1CF7A3C800776E8E /* tools */,
+				15895DF61CCBB8960011C4FB /* surport files */,
+				15895DF51CCBB87C0011C4FB /* servers */,
+				15895DF41CCBB82E0011C4FB /* models */,
+				15895DF31CCBB8070011C4FB /* controllers */,
+				15895DF21CCBB7D50011C4FB /* views */,
 				15F49EDE1CCB37590078E2FF /* AppDelegate.swift */,
-				15F49EE51CCB37590078E2FF /* Info.plist */,
-				15895DF01CCB72530011C4FB /* EventBus.swift */,
 			);
 			path = CocoaMqttC;
 			sourceTree = "<group>";
@@ -233,8 +288,9 @@
 				15F49EF11CCB3A270078E2FF /* ChatMessage.swift in Sources */,
 				15F49EEF1CCB39230078E2FF /* ChatLeftMessageCell.swift in Sources */,
 				15F49EF51CCB3A380078E2FF /* ChatViewController.swift in Sources */,
-				15895DF11CCB72530011C4FB /* EventBus.swift in Sources */,
 				15F49EDF1CCB37590078E2FF /* AppDelegate.swift in Sources */,
+				15895DFA1CCBBB070011C4FB /* LoginService.swift in Sources */,
+				150BC54A1CF7A78800776E8E /* NSObject+GetUUID.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -340,10 +396,14 @@
 			baseConfigurationReference = B180548C7E3148832D692406 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = CocoaMqttC/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = iotnton.CocoaMqttC;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "CocoaMqttC/CocoaMqttC-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -352,10 +412,13 @@
 			baseConfigurationReference = 0056F992A02B774275329361 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = CocoaMqttC/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = iotnton.CocoaMqttC;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "CocoaMqttC/CocoaMqttC-Bridging-Header.h";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
